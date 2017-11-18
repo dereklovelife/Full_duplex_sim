@@ -31,7 +31,7 @@ class Solution(object):
 
             self.findLambda()
             tmp = [1] * (self.numOfUser + 1)
-            for i in xrange(1, self.numOfUser + 1):
+            for i in range(1, self.numOfUser + 1):
                 tmp[i] = sum(tmp[:i]) * self.H[i - 1] / self.z[i - 1]
             self.tau[0] = 1 / (sum(tmp))
             for i in xrange(1, self.numOfUser + 1):
@@ -45,7 +45,7 @@ class Solution(object):
 
             grad.append(np.sqrt(sum(self.mu * gradient ** 2)))
             self.mu += self.step * gradient
-            for i in xrange(len(self.mu)):
+            for i in range(len(self.mu)):
                 if self.mu[i] < 0:
                     self.mu[i] = 0
             count += 1
@@ -73,7 +73,7 @@ class Solution(object):
                 la_max = self.lamb
 
     def findZ(self):
-        for i in xrange(self.numOfUser):
+        for i in range(self.numOfUser):
             z_max = 1000000
             z_min = 0
             while z_max - z_min > 0.005:
@@ -88,5 +88,3 @@ class Solution(object):
 if __name__ == "__main__":
     s = Solution([0.1,0.2,0.1,0.4],4,[2.4,2.6,2.1,2.7])
     res = s.findMu()
-    print res.throughputRate
-    print res.timeSlots
